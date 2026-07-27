@@ -1,0 +1,35 @@
+import { act,renderHook} from "@testing-library/react"
+import {describe,expect,it} from "vitest"
+
+import { useCounter } from "../useCounter"
+
+describe("useCounter",()=>{
+    it("should increment and decrement counter properly",()=>{
+        const {result} = renderHook(()=>useCounter({initialValue:0}))
+        //console.log(a)()
+        expect(result.current.counter).toBe(0)
+
+        act(()=>{
+            result.current.increment(1)
+        })
+        expect(result.current.counter).toBe(1)
+         act(()=>{
+            result.current.decrement(1)
+        })
+        expect(result.current.counter).toBe(0)
+    })
+     it("should increment and decrement counter by given value",()=>{
+        const {result} = renderHook(()=>useCounter({initialValue:5}))
+        //console.log(a)()
+        expect(result.current.counter).toBe(5)
+
+        act(()=>{
+            result.current.increment(5)
+        })
+        expect(result.current.counter).toBe(10)
+         act(()=>{
+            result.current.decrement(4)
+        })
+        expect(result.current.counter).toBe(6)
+    })
+})
