@@ -7,7 +7,7 @@ export function useEvent<T extends AnyFunction>(callback:T):T {
 
     React.useEffect(()=>{
         ref.current = callback
-    },[])
+    },[callback])
 
     return React.useCallback<AnyFunction>((...args: unknown[]) => ref.current?.(...args),[]) as T
 }
