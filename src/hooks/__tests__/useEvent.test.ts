@@ -7,6 +7,7 @@ import { useEvent } from "../useEvent"
 describe("useEvent", () => {
 
   it("should call the callback with arguments", () => {
+
     const callback = vi.fn()
 
     const { result } = renderHook(() => useEvent(callback))
@@ -21,6 +22,7 @@ describe("useEvent", () => {
 
 
   it("should keep the same function reference between renders", () => {
+    
     const callback = vi.fn()
 
     const { result, rerender } = renderHook(
